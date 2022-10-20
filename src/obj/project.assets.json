@@ -17,14 +17,10 @@
       "JetBrains.Annotations/2020.1.0": {
         "type": "package",
         "compile": {
-          "lib/netstandard2.0/JetBrains.Annotations.dll": {
-            "related": ".deps.json;.xml"
-          }
+          "lib/netstandard2.0/JetBrains.Annotations.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.0/JetBrains.Annotations.dll": {
-            "related": ".deps.json;.xml"
-          }
+          "lib/netstandard2.0/JetBrains.Annotations.dll": {}
         }
       }
     }
@@ -76,11 +72,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/nyako/Documents/ConSoul/ConSoul/src/src.csproj",
+      "projectUniqueName": "/home/nyako/Documents/ConSoul/src/src.csproj",
       "projectName": "src",
-      "projectPath": "/home/nyako/Documents/ConSoul/ConSoul/src/src.csproj",
+      "projectPath": "/home/nyako/Documents/ConSoul/src/src.csproj",
       "packagesPath": "/home/nyako/.nuget/packages/",
-      "outputPath": "/home/nyako/Documents/ConSoul/ConSoul/src/obj/",
+      "outputPath": "/home/nyako/Documents/ConSoul/src/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/nyako/.nuget/NuGet/NuGet.Config"

@@ -3,6 +3,9 @@ using System.IO;
 using System.Runtime.InteropServices;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Reflection;
+using System.Resources;
+using System.Diagnostics;
 
 namespace src
 {
@@ -12,11 +15,32 @@ namespace src
         public ConsoleColor Color { get; set; }
         public bool Sound { get; set; }
     }
+
+    public class Module
+    {
+        
+    }
+    
+    public class Character
+    {
+        // Character Info
+        public string? Name { get; set; }
+        public string? Backstory { get; set; }
+        public int[]? SkillPoints { get; set; }
+        
+        // Game Info
+        public Module[]? EnabledModules { get; set; }
+    }
     
     internal class Program
     {
         private static bool inUpdate = false;
         private static bool finishUpdate = false;
+
+        static void PlayClick()
+        {
+            
+        }
 
         static void LoadMenu()
         {
@@ -128,9 +152,10 @@ namespace src
                 }
             }
         }
-        
+
         static void CharacterMenu()
         {
+            string appData = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData, Environment.SpecialFolderOption.DoNotVerify), "ConSoul");
             Console.Clear();
             bool inMenu = false;
             
@@ -159,11 +184,41 @@ namespace src
             Console.WriteLine();
             Console.WriteLine("Character Creation \nFollow the steps to create your character");
             Console.WriteLine();
-            
-            Console.WriteLine(@"Character Creation:
 
-    B : Back
-            ");
+            Character? newChar;
+            
+            if (!File.Exists(appData + "/tmpChar.json"))
+            {
+                var Defaults = new Character()
+                {
+                    Name = "None",
+                    Backstory = "None",
+                    SkillPoints = new []{0,0,0,0}
+                };
+            
+                string jsonString = JsonSerializer.Serialize(Defaults);
+                File.WriteAllText(appData + "/tmpChar.json", jsonString);
+                newChar = Defaults;
+            }
+            else
+            {
+                string ReadString = File.ReadAllText(appData + "/tmpChar.json");
+                newChar = JsonSerializer.Deserialize<Character>(ReadString);
+            }
+
+            Console.WriteLine(@"Character Creation:
+	Character:
+	N : Name : {0}
+	D : Backstory : {1}
+	A : Skill Points
+
+	Game:
+	M : Modules
+
+	S : Save
+	P : Save And Play
+
+    B : Back", newChar.Name, newChar.Backstory);
             
             inMenu = true;
             while (inMenu)
@@ -172,11 +227,59 @@ namespace src
                 ConsoleKeyInfo key = new ConsoleKeyInfo();
                 
                 key = Console.ReadKey(true);
-
+                string jsonString;
                 switch (key.Key)
                 {
+					case ConsoleKey.N:
+						Console.Write(@"
+	Enter Character Name >> ");
+                        newChar.Name = Console.ReadLine();
+                        
+                        // Save Temp File
+                        jsonString = JsonSerializer.Serialize(newChar);
+                        File.WriteAllText(appData + "/tmpChar.json", jsonString);
+                        inMenu = false;
+                        CharacterMenu();
+                        break;
+                    
+                    case ConsoleKey.D:
+                        Console.Write(@"
+    Enter Character Backstory >> ");
+                        newChar.Backstory = Console.ReadLine();
+                        // Save Temp File
+                        jsonString = JsonSerializer.Serialize(newChar);
+                        File.WriteAllText(appData + "/tmpChar.json", jsonString);
+                        inMenu = false;
+                        CharacterMenu();
+                        break;
+                    
+                    case ConsoleKey.A:
+                        Console.Write(@"
+    Menu For Skill Points");
+                        inMenu = false;
+                        MainMenu();
+                        break;
+                    
+                    case ConsoleKey.S:
+                        Console.Write("Saving Character Returning");
+                        jsonString = JsonSerializer.Serialize(newChar);
+                        File.WriteAllText(appData + "/saves/" + newChar.Name, jsonString);
+                        File.Delete(appData + "/tmpChar.json");
+                        inMenu = false;
+                        MainMenu();
+                        break;
+                    
+                    case ConsoleKey.P:
+                        // Probably wont get functionality for a while
+                        Console.Write("Saving and Starting Game...");
+                        File.Delete(appData + "/tmpChar.json");
+                        inMenu = false;
+                        MainMenu();
+                        break;
+                    
                     case ConsoleKey.B:
                         Console.WriteLine(@"Returning");
+                        File.Delete(appData + "/tmpChar.json");
                         inMenu = false;
                         MainMenu();
                         break;
@@ -310,6 +413,7 @@ namespace src
     O : Options
     Q : Quit
             ");
+            
             inMenu = true;
             while (inMenu)
             {
@@ -349,11 +453,15 @@ We hope to see you again!");
             string appData = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData, Environment.SpecialFolderOption.DoNotVerify), "ConSoul");
 // Ensure the directory and all its parents exist.
             Directory.CreateDirectory(appData);
+            string[] paths = new[] { "/saves", "/themes", "/modules" };
+            using (var progress = new ProgressBar()) {
+                for (int i = 0; i < paths.Length; i++) {
+                    Directory.CreateDirectory(appData + paths[i]);
+                    progress.Report((double) i / paths.Length);
+                    Thread.Sleep(25);
+                }
+            }
 
-            Directory.CreateDirectory(appData + "/saves");
-            Directory.CreateDirectory(appData + "/themes");
-            Directory.CreateDirectory(appData + "/modules");
-            
             var config = new Config()
             {
                 Sound = true,
@@ -373,12 +481,6 @@ We hope to see you again!");
             {
                 Console.WriteLine("Performing First Time Setup");
                 firstTimeSetup();
-                using (var progress = new ProgressBar()) {
-                    for (int i = 0; i <= 100; i++) {
-                        progress.Report((double) i / 100);
-                        Thread.Sleep(25);
-                    }
-                }
             }
             
             string readText = File.ReadAllText(appData + "/config.json");

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/nyako/Documents/ConSoul/ConSoul/src/src.csproj": {}
+    "/home/nyako/Documents/ConSoul/src/src.csproj": {}
   },
   "projects": {
-    "/home/nyako/Documents/ConSoul/ConSoul/src/src.csproj": {
+    "/home/nyako/Documents/ConSoul/src/src.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/nyako/Documents/ConSoul/ConSoul/src/src.csproj",
+        "projectUniqueName": "/home/nyako/Documents/ConSoul/src/src.csproj",
         "projectName": "src",
-        "projectPath": "/home/nyako/Documents/ConSoul/ConSoul/src/src.csproj",
+        "projectPath": "/home/nyako/Documents/ConSoul/src/src.csproj",
         "packagesPath": "/home/nyako/.nuget/packages/",
-        "outputPath": "/home/nyako/Documents/ConSoul/ConSoul/src/obj/",
+        "outputPath": "/home/nyako/Documents/ConSoul/src/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/nyako/.nuget/NuGet/NuGet.Config"
