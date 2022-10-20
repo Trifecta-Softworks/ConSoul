@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "2/62VLssyJvcqXi+STcysm0l86O2JdC1MosTxB3FNfIMMRFXLqt745wEn6HoRGw5uvpb1dxVtYWseiNq/rNM2g==",
+  "success": true,
+  "projectFilePath": "/home/nyako/Documents/ConSoul/ConSoul/src/src.csproj",
+  "expectedPackageFiles": [
+    "/home/nyako/.nuget/packages/figlet.net/1.1.2/figlet.net.1.1.2.nupkg.sha512",
+    "/home/nyako/.nuget/packages/jetbrains.annotations/2020.1.0/jetbrains.annotations.2020.1.0.nupkg.sha512",
+    "/home/nyako/.nuget/packages/microsoft.aspnetcore.app.ref/6.0.9/microsoft.aspnetcore.app.ref.6.0.9.nupkg.sha512"
+  ],
+  "logs": []
+}

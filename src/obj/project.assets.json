@@ -1,0 +1,140 @@
+{
+  "version": 3,
+  "targets": {
+    "net6.0": {
+      "FIGlet.Net/1.1.2": {
+        "type": "package",
+        "dependencies": {
+          "JetBrains.Annotations": "2020.1.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/WenceyWang.FIGlet.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/WenceyWang.FIGlet.dll": {}
+        }
+      },
+      "JetBrains.Annotations/2020.1.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/JetBrains.Annotations.dll": {
+            "related": ".deps.json;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/JetBrains.Annotations.dll": {
+            "related": ".deps.json;.xml"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "FIGlet.Net/1.1.2": {
+      "sha512": "TjTFxLdcEEaBk3/Rpr0AD1kTU//LFSEUgOFK3GAf4Hx+XB+X4XAhvGcVsGbWAFIAXCdYPvLVUplhbtbFiFegfw==",
+      "type": "package",
+      "path": "figlet.net/1.1.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "figlet.net.1.1.2.nupkg.sha512",
+        "figlet.net.nuspec",
+        "lib/netstandard2.0/WenceyWang.FIGlet.dll"
+      ]
+    },
+    "JetBrains.Annotations/2020.1.0": {
+      "sha512": "kD9D2ey3DGeLbfIzS8PkwLFkcF5vCOLk2rdjgfSxTfpoyovl7gAyoS6yq6T77zo9QgJGaVJ7PO/cSgLopnKlzg==",
+      "type": "package",
+      "path": "jetbrains.annotations/2020.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "icon.png",
+        "jetbrains.annotations.2020.1.0.nupkg.sha512",
+        "jetbrains.annotations.nuspec",
+        "lib/net20/JetBrains.Annotations.dll",
+        "lib/net20/JetBrains.Annotations.xml",
+        "lib/netstandard1.0/JetBrains.Annotations.deps.json",
+        "lib/netstandard1.0/JetBrains.Annotations.dll",
+        "lib/netstandard1.0/JetBrains.Annotations.xml",
+        "lib/netstandard2.0/JetBrains.Annotations.deps.json",
+        "lib/netstandard2.0/JetBrains.Annotations.dll",
+        "lib/netstandard2.0/JetBrains.Annotations.xml",
+        "lib/portable40-net40+sl5+win8+wp8+wpa81/JetBrains.Annotations.dll",
+        "lib/portable40-net40+sl5+win8+wp8+wpa81/JetBrains.Annotations.xml"
+      ]
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net6.0": [
+      "FIGlet.Net >= 1.1.2"
+    ]
+  },
+  "packageFolders": {
+    "/home/nyako/.nuget/packages/": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "/home/nyako/Documents/ConSoul/ConSoul/src/src.csproj",
+      "projectName": "src",
+      "projectPath": "/home/nyako/Documents/ConSoul/ConSoul/src/src.csproj",
+      "packagesPath": "/home/nyako/.nuget/packages/",
+      "outputPath": "/home/nyako/Documents/ConSoul/ConSoul/src/obj/",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "/home/nyako/.nuget/NuGet/NuGet.Config"
+      ],
+      "originalTargetFrameworks": [
+        "net6.0"
+      ],
+      "sources": {
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "projectReferences": {}
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net6.0": {
+        "targetAlias": "net6.0",
+        "dependencies": {
+          "FIGlet.Net": {
+            "target": "Package",
+            "version": "[1.1.2, )"
+          }
+        },
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[6.0.9, 6.0.9]"
+          }
+        ],
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/6.0.109/RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}
